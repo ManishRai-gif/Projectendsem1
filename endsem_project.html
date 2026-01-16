@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect | Student Network</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7fe; color: #333; }
+        
+
+        .navbar { background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        .navbar-brand { font-weight: 700; color: #0d6efd; }
+
+
+        #details-page { display: none; padding: 60px 0; }
+        .active-page { display: block !important; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+        .feature-card {
+            background: white; border: none; padding: 40px 20px; border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-10px); background: #0d6efd; color: white; }
+        .icon-box { font-size: 3rem; color: #0d6efd; margin-bottom: 20px; transition: 0.3s; }
+        .feature-card:hover .icon-box { color: white; }
+
+
+        .custom-footer { 
+            background: #ffffff; 
+            border-top: 2px solid #eef2f6; 
+            padding: 80px 0 30px; 
+            color: #444; 
+        }
+        .contact-box { 
+            background: #f8faff; 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 1px solid #dee2e6;
+        }
+        .form-control { 
+            background: #fff; 
+            border: 1px solid #ced4da; 
+            padding: 12px; 
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="goBack()"><i class="fas fa-graduation-cap"></i> CampusConnect</a>
+        </div>
+    </nav>
+
+    <div id="main-content">
+        <section class="py-5 text-center bg-white">
+            <div class="container py-5">
+                <h1 class="display-4 fw-bold text-primary">Your Campus, One Network.</h1>
+                <p class="lead text-muted">A dedicated space for students to learn, grow, and connect.</p>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container text-center">
+                <h2 class="fw-bold mb-5">Why Choose Campus Connect?</h2>
+                <div class="row g-4">
+                    <div class="col-md-4" onclick="showDetails('Digital Notes', 'Get access to thousands of hand-written notes and solved papers.', 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800')">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="fas fa-edit"></i></div>
+                            <h4>Shared Notes</h4>
+                            <p>Everything you need for exams.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="showDetails('Event Tracker', 'Hackathons, fests, and workshops—all in one place.', 'https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=800')">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
+                            <h4>Campus Events</h4>
+                            <p>Stay updated with every fest.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4" onclick="showDetails('Community Hub', 'Talk to seniors, alumni, and batchmates easily.', 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800')">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="fas fa-users"></i></div>
+                            <h4>Study Groups</h4>
+                            <p>Learn together, grow together.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="details-page" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-11 bg-white p-5 rounded-4 shadow-sm">
+                <button class="btn btn-light border mb-4" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back</button>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 id="detail-title" class="fw-bold text-primary display-5"></h1>
+                        <p id="detail-desc" class="fs-5 text-muted my-4"></p>
+                        <button class="btn btn-primary px-5 py-2">Get Started</button>
+                    </div>
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <img id="detail-img" src="" class="img-fluid rounded-4 shadow" alt="Campus Feature">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="custom-footer" id="contact">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h2 class="fw-bold text-primary mb-3">Contact Me</h2>
+                    <p class="text-secondary">Have any questions or suggestions? Feel free to drop a message, and I'll get back to you soon.</p>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope text-primary me-3"></i>
+                            <span>support@campusconnect.com</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                            <span>Lucknow, Uttar Pradesh</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="contact-box">
+                        <h4 class="mb-4 fw-bold">Send Message</h4>
+                        <form onsubmit="event.preventDefault(); alert('Success! Message Sent.'); this.reset();">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Full Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="4" placeholder="Your Message..." required></textarea>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button class="btn btn-primary px-5 py-2 fw-bold shadow-sm">Send Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4 text-muted">
+            <div class="text-center text-muted small">©️ 2026 Campus Connect | Connect, Share, Succeed</div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        function showDetails(title, desc, imageUrl) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-desc').innerText = desc;
+            document.getElementById('detail-img').src = imageUrl; // Setting image dynamically
+            
+            document.getElementById('details-page').classList.add('active-page');
+            window.scrollTo(0, 0);
+        }
+
+        function goBack() {
+            document.getElementById('details-page').classList.remove('active-page');
+            document.getElementById('main-content').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
